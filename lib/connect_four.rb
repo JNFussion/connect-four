@@ -11,14 +11,21 @@ class ConnectFour
   end
 
   def play
+    i = 0
     loop do
-      draw_board
+      self.draw_board
 
-      turn_player(@@PLAYER_1)
-
-      draw_board
+      i.even? ? turn_player(@@PLAYER_1) : turn_player(@@PLAYER_2)
 
       winner = self.winner
+      if winner
+        self.draw_board
+        puts '*' * 20
+        puts "player #{winner == 'X' ? 1 : 2} WON"
+        puts '*' * 20
+        return
+      end
+      i += 1
     end
   end
 
@@ -28,7 +35,7 @@ class ConnectFour
         puts 'Introduce the number of the column: '
 
         input = gets.chomp
-        break unless add(input, 'X').nil?
+        break unless add(input, player_simbol).nil?
       end
     end
 
@@ -92,7 +99,7 @@ class ConnectFour
       diagonals_downward.delete_if { |diagonal| diagonal.size < 4}
       diagonals_upward.delete_if { |diagonal| diagonal.size < 4}
 
-      option = horizontal_win(diagonals_downward).nil?
+      option = horizontal_win(diagonals_downward)
       return option unless option.nil?
 
       horizontal_win(diagonals_upward)
@@ -142,3 +149,6 @@ class ConnectFour
       puts
     end
 end
+
+game = ConnectFour.new
+game.play
