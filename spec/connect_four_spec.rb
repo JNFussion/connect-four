@@ -33,33 +33,33 @@ describe "connect_four" do
         it "return X if 4 player1's pieces connect" do
             game = ConnectFour.new
             board = game.board
-            colunm = rand(0..6)
-            board[0][colunm] = 'O'
+            column = rand(0..6)
+            board[0][column] = 'O'
             (1..4).each do |index|
-                board[index][colunm] = 'X'
+                board[index][column] = 'X'
             end
-            board[5][colunm]  = 'O'
+            board[5][column]  = 'O'
             expect(game.vertical_win).to eql('X')
         end
         
         it "return O if 4 player2's pieces connect" do
             game = ConnectFour.new
             board = game.board
-            colunm = rand(0..6)
-            board[0][colunm] = 'X'
+            column = rand(0..6)
+            board[0][column] = 'X'
             (1..4).each do |index|
-                board[index][colunm] = 'O'
+                board[index][column] = 'O'
             end
-            board[5][colunm]  = 'X'
+            board[5][column]  = 'X'
             expect(game.vertical_win).to eql('O')
         end
 
         it "return nil if there is no vertical win" do
             game = ConnectFour.new
             board = game.board
-            colunm = rand(0..6)
+            column = rand(0..6)
             (0..5).each do |index|
-                index.even? ? board[index][colunm] = 'O' : board[index][colunm] = 'X'
+                index.even? ? board[index][column] = 'O' : board[index][column] = 'X'
             end
             expect(game.vertical_win).to eql(nil)
         end
@@ -123,33 +123,33 @@ describe "connect_four" do
         it "return X if 4 player1's pieces connect" do
             game = ConnectFour.new
             board = game.board
-            colunm = rand(0..6)
-            board[0][colunm] = 'O'
+            column = rand(0..6)
+            board[0][column] = 'O'
             (1..4).each do |index|
-                board[index][colunm] = 'X'
+                board[index][column] = 'X'
             end
-            board[5][colunm]  = 'O'
+            board[5][column]  = 'O'
             expect(game.winner).to eql('X')
         end
         
         it "return O if 4 player2's pieces connect" do
             game = ConnectFour.new
             board = game.board
-            colunm = rand(0..6)
-            board[0][colunm] = 'X'
+            column = rand(0..6)
+            board[0][column] = 'X'
             (1..4).each do |index|
-                board[index][colunm] = 'O'
+                board[index][column] = 'O'
             end
-            board[5][colunm]  = 'X'
+            board[5][column]  = 'X'
             expect(game.winner).to eql('O')
         end
 
         it "return nil if there is no vertical win" do
             game = ConnectFour.new
             board = game.board
-            colunm = rand(0..6)
+            column = rand(0..6)
             (0..5).each do |index|
-                index.even? ? board[index][colunm] = 'O' : board[index][colunm] = 'X'
+                index.even? ? board[index][column] = 'O' : board[index][column] = 'X'
             end
             expect(game.winner).to eql(nil)
         end
