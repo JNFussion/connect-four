@@ -49,6 +49,7 @@ class ConnectFour
           return [numb, column]
         end
       end
+      nil
     end
 
     def horizontal_win(board = @board)
